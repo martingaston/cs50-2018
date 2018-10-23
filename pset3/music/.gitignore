@@ -1,0 +1,7 @@
+/songs
+helpers.h
+notes.c
+synthesize.c
+wav.c
+wav.h
+*.wav
