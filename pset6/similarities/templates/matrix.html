@@ -1,0 +1,31 @@
+<!-- TODO -->
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      {% for l in s2 %}
+      <th>{{ l }}</th>
+      {% endfor %}
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      {% for x in matrix[0] %}
+      <th>{{ x[0] }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for y in matrix %}
+    <tr>
+      <th>{% if loop.index0 > 0 %} {{ s1[loop.index0 - 1] }} {% endif %}</th>
+      <th>{{ y[0][0] }}</th>
+      {% for c in y[0:] %}
+      <td>{{ c[0] }}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
