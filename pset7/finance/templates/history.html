@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in history %}
+                <tr>
+                    {% if transaction.shares > 0 %}
+                    <td class="font-weight-bold text-white bg-danger">BUY</td>
+                    {% else %}
+                    <td class="font-weight-bold text-white bg-success">SELL</td>
+                    {% endif %}
+                    <td>{{ transaction["symbol"] }}</td>
+                    <td>{{ transaction["name"] }}</td>
+                    <td>{{ transaction["shares"] }}</td>
+                    <td class="{% if transaction.shares > 0 %}text-danger{% else %}text-success{% endif %}">{{ transaction["cost"]|usd }}</td>
+                    <td>{{ transaction["datetime"] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
